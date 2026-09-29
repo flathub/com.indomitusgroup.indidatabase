@@ -1,6 +1,8 @@
 app-id: com.indomitusgroup.indidatabase
 runtime: org.gnome.Platform
-runtime-version: '50'
+# The newest GNOME runtime: Flathub takes a new app only on the current
+# one. Move it up when the next is released, and try the build on it.
+runtime-version: '51'
 sdk: org.gnome.Sdk
 
 command: indidatabase
@@ -12,13 +14,7 @@ finish-args:
   - --share=ipc
   # GPU acceleration for the WebKitGTK webview
   - --device=dri
-  # Outbound network is required for two features that cannot use a portal:
-  #   * Multi-user sharing on the local network — the host answers on a TLS
-  #     socket, other desks discover it over mDNS and connect to it; both
-  #     directions are the app's own sockets (indidb-net).
-  #   * License upgrades — one HTTPS request to the license server
-  #     (api.indomitusgroup.com) to mint a pay-the-difference checkout.
-  #     Trial, activation, and verification are fully offline.
+  # Outbound network needed for multi-user access over local network and license upgrades
   - --share=network
 
 modules:
@@ -32,7 +28,9 @@ modules:
       - install -Dm644 icons/128x128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/256x256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/512x512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.indomitusgroup.indidatabase.png
+      # The license agreement, where Flathub requires licenses to be.
+      - install -Dm644 LICENSE -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}
     sources:
       - type: archive
         url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.0.0-linux-x86_64.tar.gz
-        sha256: 00048791e806ad30cdb9881c85fbd58a03cccee47d9d919653e41bb7a933c1f1
+        sha256: d249a3fd2b4738ac3d4a17b0af730cbb064e1a416828e4841d817c880188ce8c
