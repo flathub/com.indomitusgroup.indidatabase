@@ -1,18 +1,14 @@
 app-id: com.indomitusgroup.indidatabase
 runtime: org.gnome.Platform
-# The newest GNOME runtime: Flathub takes a new app only on the current
-# one. Move it up when the next is released, and try the build on it.
 runtime-version: '51'
 sdk: org.gnome.Sdk
 
 command: indidatabase
 
 finish-args:
-  # Display (Tauri / WebKitGTK)
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
-  # GPU acceleration for the WebKitGTK webview
   - --device=dri
   # Outbound network needed for multi-user access over local network and license upgrades
   - --share=network
@@ -28,7 +24,7 @@ modules:
       - install -Dm644 icons/128x128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/256x256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/512x512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.indomitusgroup.indidatabase.png
-      # The license agreement, where Flathub requires licenses to be.
+      
       - install -Dm644 LICENSE -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}
     sources:
       - type: archive
