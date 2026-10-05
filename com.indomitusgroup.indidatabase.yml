@@ -1,7 +1,5 @@
 app-id: com.indomitusgroup.indidatabase
 runtime: org.gnome.Platform
-# The newest GNOME runtime: Flathub takes a new app only on the current
-# one. Move it up when the next is released, and try the build on it.
 runtime-version: '51'
 sdk: org.gnome.Sdk
 
@@ -16,8 +14,9 @@ finish-args:
   - --device=dri
   # Outbound network needed for multi-user access over local network and license upgrades
   - --share=network
-  # Databases in the home folder: SQLite's journal, backups and restores live beside the file, which the document portal can't provide
-  - --filesystem=home
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-desktop
+  - --filesystem=xdg-download
   # Keyring (Secret Service), so paired computers stay paired across restarts
   - --talk-name=org.freedesktop.secrets
 
@@ -37,4 +36,4 @@ modules:
     sources:
       - type: archive
         url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.0.2-linux-x86_64.tar.gz
-        sha256: 91acb099910a0e90f51cb48b1b0df8bd07941d2b6c3c3f32688ea9a5d2520bfc
+        sha256: 6ea28383766c9ee65729e1aa86883afa0467108ab72e9ea69545080d081e339c
