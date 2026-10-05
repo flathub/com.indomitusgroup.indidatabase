@@ -6,12 +6,19 @@ sdk: org.gnome.Sdk
 command: indidatabase
 
 finish-args:
+  # Display (Tauri / WebKitGTK)
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
+  # GPU acceleration for the WebKitGTK webview
   - --device=dri
   # Outbound network needed for multi-user access over local network and license upgrades
   - --share=network
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-desktop
+  - --filesystem=xdg-download
+  # Keyring (Secret Service), so paired computers stay paired across restarts
+  - --talk-name=org.freedesktop.secrets
 
 modules:
   - name: indidatabase
@@ -24,9 +31,9 @@ modules:
       - install -Dm644 icons/128x128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/256x256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/com.indomitusgroup.indidatabase.png
       - install -Dm644 icons/512x512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.indomitusgroup.indidatabase.png
-      
+      # The license agreement, where Flathub requires licenses to be.
       - install -Dm644 LICENSE -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}
     sources:
       - type: archive
-        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.0.0-linux-x86_64.tar.gz
-        sha256: d249a3fd2b4738ac3d4a17b0af730cbb064e1a416828e4841d817c880188ce8c
+        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.0.2-linux-x86_64.tar.gz
+        sha256: 6ea28383766c9ee65729e1aa86883afa0467108ab72e9ea69545080d081e339c
