@@ -36,4 +36,4 @@ modules:
     sources:
       - type: archive
         url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.0.4-linux-x86_64.tar.gz
-        sha256: 1f701ff0fe052d612b7bd7e4f3a0f3ccd37cccb30b867a442a02e1348c0a0ec4
+        sha256: 658d6575c224f8e01c88a72838503d18ae0f86316a120068b6dcd355b9c490f0
