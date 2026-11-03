@@ -25,6 +25,9 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 indidatabase ${FLATPAK_DEST}/bin/indidatabase
+      # The command-line companion for other programs:
+      # flatpak run --command=indidatabase-cli com.indomitusgroup.indidatabase …
+      - install -Dm755 indidatabase-cli ${FLATPAK_DEST}/bin/indidatabase-cli
       - install -Dm644 com.indomitusgroup.indidatabase.desktop ${FLATPAK_DEST}/share/applications/com.indomitusgroup.indidatabase.desktop
       - install -Dm644 com.indomitusgroup.indidatabase.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.indomitusgroup.indidatabase.metainfo.xml
       - install -Dm644 icons/32x32.png ${FLATPAK_DEST}/share/icons/hicolor/32x32/apps/com.indomitusgroup.indidatabase.png
@@ -35,5 +38,5 @@ modules:
       - install -Dm644 LICENSE -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}
     sources:
       - type: archive
-        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.4.0-linux-x86_64.tar.gz
-        sha256: 139c0d118d71ac96468a81012d4da20d845890f08a0c06a436ce2aa669c18412
+        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.5.0-linux-x86_64.tar.gz
+        sha256: 5f3973fba41b04a6708c8abb585681896f506a6c761ff314d7b0d7f2687a341d
