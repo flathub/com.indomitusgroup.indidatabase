@@ -38,5 +38,5 @@ modules:
       - install -Dm644 LICENSE -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}
     sources:
       - type: archive
-        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.6.0-linux-x86_64.tar.gz
-        sha256: a7d1ae72c340248eda89d7c4358bc35ca698b44a41d4f8222cc5747f230f8f2e
+        url: https://downloads.indomitusgroup.com/indidatabase/indidatabase-1.7.0-linux-x86_64.tar.gz
+        sha256: 33481e87045e4847dc10d6abd0296872012440ddd7d93072b69b3f72b46d5f9d
